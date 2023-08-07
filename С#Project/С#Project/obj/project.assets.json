@@ -11,10 +11,23 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
-      "Service/1.0.0": {
+      "Repository/1.0.0": {
         "type": "project",
         "dependencies": {
           "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
+        }
+      },
+      "Service/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Repository": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Service.dll": {}
@@ -30,6 +43,11 @@
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     },
     "Service/1.0.0": {
       "type": "project",
@@ -48,11 +66,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\С#Project.csproj",
+      "projectUniqueName": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\С#Project.csproj",
       "projectName": "С#Project",
-      "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\С#Project.csproj",
+      "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\С#Project.csproj",
       "packagesPath": "C:\\Users\\Honor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\obj\\",
+      "outputPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Honor\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,8 +87,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj": {
-              "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj"
+            "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj"
             }
           }
         }

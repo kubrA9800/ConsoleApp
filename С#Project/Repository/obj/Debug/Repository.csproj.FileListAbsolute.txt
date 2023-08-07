@@ -1,0 +1,9 @@
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\bin\Debug\Repository.dll
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\bin\Debug\Repository.pdb
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\bin\Debug\Domain.dll
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\bin\Debug\Domain.pdb
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\obj\Debug\Repository.csproj.AssemblyReference.cache
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\obj\Debug\Repository.csproj.CopyComplete
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\obj\Debug\Repository.dll
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Repository\obj\Debug\Repository.pdb

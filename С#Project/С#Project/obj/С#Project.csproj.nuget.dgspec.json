@@ -1,14 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\С#Project.csproj": {}
+    "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\С#Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Domain\\Domain.csproj": {
+    "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
@@ -19,16 +19,16 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj": {
+    "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Repository\\Repository.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj",
-        "projectName": "Service",
-        "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Repository\\Repository.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Domain\\Domain.csproj"
+              "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj"
               }
             }
           }
@@ -38,14 +38,36 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\С#Project.csproj": {
+    "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj",
+        "projectName": "Service",
+        "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Repository\\Repository.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\С#Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\С#Project.csproj",
+        "projectUniqueName": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\С#Project.csproj",
         "projectName": "С#Project",
-        "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\С#Project.csproj",
+        "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\С#Project.csproj",
         "packagesPath": "C:\\Users\\Honor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\С#Project\\obj\\",
+        "outputPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\С#Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Honor\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -62,8 +84,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj": {
-                "projectPath": "C:\\Users\\Honor\\Desktop\\C#\\С#Project\\Service\\Service.csproj"
+              "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\Honor\\Desktop\\ConsoleApp\\С#Project\\Service\\Service.csproj"
               }
             }
           }

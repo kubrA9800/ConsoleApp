@@ -14,7 +14,7 @@ namespace Service.Services.Interfaces
         void Delete(Group entity);
         void Edit(Group entity);
         List<Group> GetAll();
-        List<Group> GetAllByExpression(Expression<Func<Group, bool>> expression)
+        List<Group> GetAllByExpression(Expression<Func<Group, bool>> expression);
         Group GetById(int id);
 
         List<Group> SearchByName(string name);
