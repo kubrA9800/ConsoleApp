@@ -54,7 +54,8 @@ while(true)
                         groupController.GetAll();
                         break;
                     case 6:
-                        groupController.SearchByName();
+                        string text= Console.ReadLine();
+                        groupController.SearchByName(text);
                         break;
                     case 7:
                         groupController.GetAllByExpression();
@@ -102,6 +103,6 @@ static void RegisterLogin()
 
 Menu: static void Menues()
 {
-    ConsoleColor.Green.WriteConsole("Register success, please choose one option for workng with app: \n 1 - Create group \n 2 - Delete group \n 3 - Edit group \n 4 - Get group by id \n 5 - Get all groups \n 6 - Search group\n 7 - Filter group \n " +
+    ConsoleColor.DarkBlue.WriteConsole("Register success, please choose one option for workng with app: \n 1 - Create group \n 2 - Delete group \n 3 - Edit group \n 4 - Get group by id \n 5 - Get all groups \n 6 - Search group\n 7 - Filter group \n " +
         " \n 8 - Create student \n 9 - Delete student \n 10 - Edit student \n 11 - Get Student by id \n 12 - Get all students \n 13 - Search student \n 14 - Sorting students");
 }

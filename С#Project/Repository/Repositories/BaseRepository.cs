@@ -1,6 +1,7 @@
 ﻿using Domain.Common;
 using Repository.Repositories.Interfaces;
 using System;
+using Repository.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,7 +14,7 @@ namespace Repository.Repositories
     {
         public void Create(T entity)
         {
-            
+            AddDbContext<T>.datas.Add(entity);
         }
 
         public void Delete(T entity)
@@ -28,7 +29,7 @@ namespace Repository.Repositories
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return AddDbContext<T>.datas.ToList();
         }
 
         public T GetById(int id)

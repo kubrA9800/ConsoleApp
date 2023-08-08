@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Repository.Data;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
 using Service.Services.Interfaces;
@@ -13,11 +14,18 @@ namespace Service.Services
 {
     public class GroupService : IGroupService
     {
-        private readonly GroupRepository _groupRepostory;
-
+        private readonly IGroupRepository _groupRepository;
+        private int _count = 1;
+        public GroupService()
+        {
+            _groupRepository = new GroupRepository();
+        }
+       
         public void Create(Group entity)
         {
-            throw new NotImplementedException();
+            entity.Id = _count;
+            _groupRepository.Create(entity);
+            _count++;
         }
 
         public void Delete(Group entity)
@@ -37,7 +45,7 @@ namespace Service.Services
 
         public List<Group> GetAll()
         {
-            return _groupRepostory.GetAll();
+            return _groupRepository.GetAll();
         }
 
         public List<Group> GetAllByExpression(Expression<Func<Group, bool>> expression)
@@ -47,7 +55,7 @@ namespace Service.Services
 
         public Group GetById(int id)
         {
-            return _groupRepostory.GetById(id);
+            return _groupRepository.GetById(id);
         }
 
         public List<Group> SearchByName(string name)

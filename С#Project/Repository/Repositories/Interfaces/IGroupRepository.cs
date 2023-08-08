@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories.Interfaces
 {
-    internal interface IGroupRepository:IBaseRepository<Group>
+    public interface IGroupRepository:IBaseRepository<Group>
     {
         List<Group> SearchByName(string name);
     }

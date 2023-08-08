@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Domain.Models;
 using Repository.Repositories;
 using System.Linq.Expressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace С_Project.Controllers
 {
@@ -38,10 +39,12 @@ namespace С_Project.Controllers
             bool isCorrectSeatcount=int.TryParse(seatCountStr, out seatCount);
             if (isCorrectSeatcount)
             {
-                Group group =new Group();
-                group.Name = name;
-                group.Capacity= seatCount;
-
+                Group group = new Group()
+                {
+                    Name = name,
+                    Capacity = seatCount
+                };
+              
                 _groupService.Create(group);
                 ConsoleColor.Cyan.WriteConsole("Group create success");
             }
@@ -54,7 +57,7 @@ namespace С_Project.Controllers
         }
         public void Delete()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Edit()
@@ -62,9 +65,14 @@ namespace С_Project.Controllers
             throw new NotImplementedException();
         }
 
-        public List<Group> GetAll()
+        public void GetAll()
         {
-            return _groupRepostory.GetAll();
+            var result = _groupService.GetAll();
+            foreach (var item in result)
+            {
+                string data = $"{item.Id}-{item.Name}-{item.Capacity}";
+                ConsoleColor.Green.WriteConsole(data);
+            }
         }
 
         public List<Group> GetAllByExpression()
@@ -72,14 +80,45 @@ namespace С_Project.Controllers
             throw new NotImplementedException();
         }
 
-        public Group GetById()
+        public void GetById()
         {
-            return _groupRepostory.GetById(id);
+
+            ConsoleColor.Cyan.WriteConsole("Add Library Id");
+            Id: string IdStr = Console.ReadLine();
+            int id;
+            bool isCorrectId = int.TryParse(IdStr, out id);
+            if (isCorrectId)
+            {
+                var result = _groupService.GetById(id);
+                if (result == null)
+                {
+                    ConsoleColor.Red.WriteConsole(" Data not foundбцкшеу id again");
+                    goto Id;
+                }
+
+                string data = $"{result.Id}-{result.Name}-{result.Capacity}";
+                ConsoleColor.Green.WriteConsole(data);
+
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Please add Id format again:");
+                goto Id;
+            }
         }
 
-        public List<Group> SearchByName()
+        public List<Group> SearchByName(string text)
         {
-            throw new NotImplementedException();
+            var groups = _groupService.GetAll();
+            foreach (var group in groups)
+            {
+                if (group.Name.ToLower().Trim().Contains(text))
+                {
+                    return groups.FindAll(m => m.Name.Contains(text));
+                }
+
+            }return null;
+          
         }
 
        

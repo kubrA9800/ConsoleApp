@@ -14,5 +14,12 @@ namespace Repository.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public void Delete()
+        {
+
+        }
+
+        
     }
 }
