@@ -44,7 +44,9 @@
     <Compile Include="Helpers\Enums\Operations.cs" />
     <Compile Include="Helpers\Extentions\ConsoleExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\GroupService.cs" />
+    <Compile Include="Services\Interfaces\IAccountService.cs" />
     <Compile Include="Services\Interfaces\IGroupService.cs" />
     <Compile Include="Services\Interfaces\IStudentService.cs" />
     <Compile Include="Services\StudentService.cs" />

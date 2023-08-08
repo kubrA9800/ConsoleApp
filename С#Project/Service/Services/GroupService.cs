@@ -30,6 +30,11 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
+        public void Filter()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Group> GetAll()
         {
             return _groupRepostory.GetAll();

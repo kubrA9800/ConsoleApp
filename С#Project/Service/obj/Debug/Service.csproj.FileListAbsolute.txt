@@ -1,11 +1,11 @@
-C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.csproj.AssemblyReference.cache
-C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\bin\Debug\Service.dll
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\bin\Debug\Service.pdb
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\bin\Debug\Domain.dll
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\bin\Debug\Repository.dll
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\bin\Debug\Domain.pdb
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\bin\Debug\Repository.pdb
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.csproj.AssemblyReference.cache
+C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.dll
 C:\Users\Honor\Desktop\ConsoleApp\С#Project\Service\obj\Debug\Service.pdb

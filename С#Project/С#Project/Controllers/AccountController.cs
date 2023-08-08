@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Domain.Models;
 using Service.Helpers.Extentions;
+using Service.Services;
+using Service.Services.Interfaces;
 
 namespace С_Project.Controllers
-{
+{    
     public class AccountController
     {
 
         public void Register()
         {
-            ConsoleColor.Cyan.WriteConsole("Add username");
+            ConsoleColor.Cyan.WriteConsole("Add Name");
             Username: string username=Console.ReadLine();
             if (Regex.IsMatch(username, @"\d"))
             {
@@ -28,7 +32,7 @@ namespace С_Project.Controllers
                 goto Surname;
             }
             ConsoleColor.Cyan.WriteConsole("Add user's age");
-            Age: string ageStr=Console.ReadLine();
+            Age: string ageStr = Console.ReadLine();
             int age;
             bool isCorrectAge=int.TryParse(ageStr, out age);
             if (isCorrectAge)
@@ -56,6 +60,7 @@ namespace С_Project.Controllers
             if(password1==password2)
             {
                 ConsoleColor.Green.WriteConsole("Register success");
+
             }
             else
             {
@@ -64,5 +69,27 @@ namespace С_Project.Controllers
             }
 
         }
+
+
+
+        
+        public bool Login()
+        {
+            User user = new User();
+            ConsoleColor.Cyan.WriteConsole("Add email");
+            string email=Console.ReadLine();
+
+            ConsoleColor.Cyan.WriteConsole("Add password");
+            string password=Console.ReadLine();
+
+            if(email==user.Email && password == user.Password)
+            {
+                return true;
+            }
+            return false;
+
+        }
+        
+       
     }
 }

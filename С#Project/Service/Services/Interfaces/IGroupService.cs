@@ -19,6 +19,8 @@ namespace Service.Services.Interfaces
 
         List<Group> SearchByName(string name);
 
+        
+
 
     }
 }

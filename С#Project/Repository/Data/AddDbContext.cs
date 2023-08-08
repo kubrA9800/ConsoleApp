@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Data
 {
-    internal static class AddDbContext<T>
+    public static class AddDbContext<T>
     {
         public static List<T> datas;
 

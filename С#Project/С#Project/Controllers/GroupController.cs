@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Models;
+using Repository.Repositories;
+using System.Linq.Expressions;
 
 namespace С_Project.Controllers
 {
@@ -50,5 +52,36 @@ namespace С_Project.Controllers
             }
 
         }
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Group> GetAll()
+        {
+            return _groupRepostory.GetAll();
+        }
+
+        public List<Group> GetAllByExpression()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Group GetById()
+        {
+            return _groupRepostory.GetById(id);
+        }
+
+        public List<Group> SearchByName()
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }
