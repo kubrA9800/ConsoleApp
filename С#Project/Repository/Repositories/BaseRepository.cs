@@ -29,12 +29,12 @@ namespace Repository.Repositories
 
         public List<T> GetAll()
         {
-            return AddDbContext<T>.datas.ToList();
+            return AddDbContext<T>.datas;
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            return AddDbContext<T>.datas.FirstOrDefault(m=>m.Id== id);  
         }
 
         public List<T> GetAllByExpression(Expression<Func<T, bool>> expression)

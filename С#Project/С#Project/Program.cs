@@ -30,59 +30,64 @@ while(true)
         {
             accountController.Login();
             Menues();
-            string menuOperationStr = Console.ReadLine();
-            int menuOperation;
-            bool isCorrectMenuOperation = int.TryParse(menuOperationStr, out menuOperation);
-
-           if (isCorrectMenuOperation)
+            while (true)
             {
-                switch (menuOperation)
+                string menuOperationStr = Console.ReadLine();
+                int menuOperation;
+                bool isCorrectMenuOperation = int.TryParse(menuOperationStr, out menuOperation);
+
+                if (isCorrectMenuOperation)
                 {
-                    case 1:
-                        groupController.Create();
-                        break;
-                    case 2:
-                        groupController.Delete();
-                        break;
-                    case 3:
-                        groupController.Edit();
-                        break;
-                    case 4:
-                        groupController.GetById();
-                        break;
-                    case 5:
-                        groupController.GetAll();
-                        break;
-                    case 6:
-                        string text= Console.ReadLine();
-                        groupController.SearchByName(text);
-                        break;
-                    case 7:
-                        groupController.GetAllByExpression();
-                        break;
-                    case 8:
-                        studentController.Create();
-                        break;
-                    case 9:
-                        studentController.Delete();
-                        break;
-                    case 10:
-                        studentController.Edit();
-                        break;
-                    case 11:
-                        studentController.GetById();
-                        break;
-                    case 12:
-                        studentController.GetAll();
-                        break;
-                    case 13:
-                        studentController.SearchByName();
-                        break;
-                    case 14:
-                        studentController.GetAllByExpression();
-                        break;
-                    default:
-                        break;
+                    switch (menuOperation)
+                    {
+                        case 1:
+                            groupController.Create();
+                            break;
+                        case 2:
+                            groupController.Delete();
+                            break;
+                        case 3:
+                            groupController.Edit();
+                            break;
+                        case 4:
+                            groupController.GetById();
+                            break;
+                        case 5:
+                            groupController.GetAll();
+                            break;
+                        case 6:
+                            Console.WriteLine("Search group");
+                            string text = Console.ReadLine();
+                            groupController.SearchByName(text);
+                            break;
+                        case 7:
+                            groupController.GetAllByExpression();
+                            break;
+                        case 8:
+                            studentController.Create();
+                            break;
+                        case 9:
+                            studentController.Delete();
+                            break;
+                        case 10:
+                            studentController.Edit();
+                            break;
+                        case 11:
+                            studentController.GetById();
+                            break;
+                        case 12:
+                            studentController.GetAll();
+                            break;
+                        case 13:
+                            studentController.SearchByName();
+                            break;
+                        case 14:
+                            studentController.GetAllByExpression();
+                            break;
+                        default:
+                            break;
+                    }
+            
                 }
             }
 

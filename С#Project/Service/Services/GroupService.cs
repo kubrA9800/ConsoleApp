@@ -21,19 +21,19 @@ namespace Service.Services
             _groupRepository = new GroupRepository();
         }
        
-        public void Create(Group entity)
+        public void Create(Group group)
         {
-            entity.Id = _count;
-            _groupRepository.Create(entity);
+            group.Id = _count;
+            _groupRepository.Create(group);
             _count++;
         }
 
-        public void Delete(Group entity)
+        public void Delete(Group group)
         {
             throw new NotImplementedException();
         }
 
-        public void Edit(Group entity)
+        public void Edit(Group group)
         {
             throw new NotImplementedException();
         }
@@ -60,7 +60,7 @@ namespace Service.Services
 
         public List<Group> SearchByName(string name)
         {
-            throw new NotImplementedException();
+            return _groupRepository.SearchByName(name);
         }
     }
 }

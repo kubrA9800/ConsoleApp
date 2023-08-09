@@ -8,6 +8,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Repository.Repositories;
+using Repository.Data;
 using System.Text.RegularExpressions;
 
 namespace С_Project.Controllers
@@ -52,14 +54,38 @@ namespace С_Project.Controllers
             Age: string ageStr = Console.ReadLine();
             int age;
             bool isCorrectAge = int.TryParse(ageStr, out age);
-            if (isCorrectAge)
+
+            if (!isCorrectAge)
             {
+                ConsoleColor.Red.WriteConsole("Don't add  word for age");
+            }
+
+            ConsoleColor.Cyan.WriteConsole("Add group id");
+        GroupId: string groupIdStr = Console.ReadLine();
+            int groupId;
+            bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
+
+            GroupService groupService = new();
+            var group = groupService.GetById(groupId);
+
+            if (isCorrectGroupId)
+            {
+                Student newStudent = new()
+                {
+                    Name = name,
+                    Surname = surname,
+                    Age = age,
+                    Group = group,
+                };
+
+                _studentService.Create(newStudent);
+
                 ConsoleColor.Green.WriteConsole("Student successfully created");
             }
             else
             {
-                ConsoleColor.Red.WriteConsole("Age format is not correct, please try again");
-                goto Age;
+                ConsoleColor.Red.WriteConsole("Id format is not correct, please try again");
+                goto GroupId;
             }
 
         }
@@ -74,9 +100,14 @@ namespace С_Project.Controllers
             throw new NotImplementedException();
         }
 
-        public List<Student> GetAll()
+        public void GetAll()
         {
-            throw new NotImplementedException();
+            var result = _studentService.GetAll();
+            foreach (var item in result)
+            {
+                string data = $"{item.Id}-{item.Name}-{item.Surname} {item.Age} {item.Group.Name}";
+                ConsoleColor.Green.WriteConsole(data);
+            }
         }
 
         public List<Student> GetAllByExpression()
@@ -84,9 +115,30 @@ namespace С_Project.Controllers
             throw new NotImplementedException();
         }
 
-        public Student GetById()
+        public void GetById()
         {
-            throw new NotImplementedException();
+            ConsoleColor.Cyan.WriteConsole("Add student Id");
+            Id: string IdStr = Console.ReadLine();
+            int id;
+            bool isCorrectId = int.TryParse(IdStr, out id);
+            if (isCorrectId)
+            {
+                var result = _studentService.GetById(id);
+                if (result == null)
+                {
+                    ConsoleColor.Red.WriteConsole(" Data not found, please write id again");
+                    goto Id;
+                }
+
+                string data = $"{result.Id}-{result.Name}-{result.Age}";
+                ConsoleColor.Green.WriteConsole(data);
+
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Please add Id format again:");
+                goto Id;
+            }
         }
 
         public List<Student> SearchByName()

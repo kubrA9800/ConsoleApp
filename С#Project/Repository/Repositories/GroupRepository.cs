@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Repository.Data;
 using Repository.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Repository.Repositories
     {
         public List<Group> SearchByName(string name)
         {
-            throw new NotImplementedException();
+            return AddDbContext<Group>.datas.FindAll(m => m.Name.Contains(name));
         }
 
         public void Delete()

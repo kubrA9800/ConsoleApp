@@ -10,6 +10,7 @@ using Domain.Models;
 using Repository.Repositories;
 using System.Linq.Expressions;
 using static System.Net.Mime.MediaTypeNames;
+using Repository.Data;
 
 namespace С_Project.Controllers
 {
@@ -39,13 +40,13 @@ namespace С_Project.Controllers
             bool isCorrectSeatcount=int.TryParse(seatCountStr, out seatCount);
             if (isCorrectSeatcount)
             {
-                Group group = new Group()
+                Group entity = new Group()
                 {
                     Name = name,
                     Capacity = seatCount
                 };
               
-                _groupService.Create(group);
+                _groupService.Create(entity);
                 ConsoleColor.Cyan.WriteConsole("Group create success");
             }
             else
@@ -83,7 +84,7 @@ namespace С_Project.Controllers
         public void GetById()
         {
 
-            ConsoleColor.Cyan.WriteConsole("Add Library Id");
+            ConsoleColor.Cyan.WriteConsole("Add group Id");
             Id: string IdStr = Console.ReadLine();
             int id;
             bool isCorrectId = int.TryParse(IdStr, out id);
@@ -92,7 +93,7 @@ namespace С_Project.Controllers
                 var result = _groupService.GetById(id);
                 if (result == null)
                 {
-                    ConsoleColor.Red.WriteConsole(" Data not foundбцкшеу id again");
+                    ConsoleColor.Red.WriteConsole(" Data not found, please write id again");
                     goto Id;
                 }
 
@@ -107,18 +108,19 @@ namespace С_Project.Controllers
             }
         }
 
-        public List<Group> SearchByName(string text)
+       
+        public void SearchByName(string text)
         {
-            var groups = _groupService.GetAll();
-            foreach (var group in groups)
-            {
-                if (group.Name.ToLower().Trim().Contains(text))
-                {
-                    return groups.FindAll(m => m.Name.Contains(text));
-                }
+           Group group = new();
 
-            }return null;
-          
+          var result=_groupService.GetAll();
+          foreach (var item in result)
+            {
+                if (item.Name.ToLower().Trim().Contains(text))
+                {
+                    Console.WriteLine($"{item.Id}{item.Name} {item.Capacity}");
+                }
+            }
         }
 
        

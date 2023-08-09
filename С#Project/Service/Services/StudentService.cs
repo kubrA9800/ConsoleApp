@@ -1,4 +1,7 @@
 ﻿using Domain.Models;
+using Repository.Repositories;
+using Repository.Repositories.Interfaces;
+using Repository.Data;
 using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,26 +13,35 @@ using System.Threading.Tasks;
 namespace Service.Services
 {
     public class StudentService : IStudentService
-
     {
-        public void Create(Student entity)
+        private readonly IStudentRepository _studentRepository;
+        private int _count = 1;
+
+        public StudentService()
+        {
+            _studentRepository = new StudentRepository();
+        }
+
+        public void Create(Student student)
+        {
+            student.Id = _count;
+            _studentRepository.Create(student);
+            _count++;
+        }
+
+        public void Delete(Student student)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Student entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Edit(Student entity)
+        public void Edit(Student student)
         {
             throw new NotImplementedException();
         }
 
         public List<Student> GetAll()
         {
-            throw new NotImplementedException();
+            return _studentRepository.GetAll();
         }
 
         public List<Student> GetAllByExpression(Expression<Func<Student, bool>> expression)
@@ -39,7 +51,7 @@ namespace Service.Services
 
         public Student GetById(int id)
         {
-            throw new NotImplementedException();
+            return _studentRepository.GetById(id);
         }
 
         public List<Student> SearchByName(string name)
