@@ -141,9 +141,20 @@ namespace С_Project.Controllers
             }
         }
 
-        public List<Student> SearchByName()
+        public void SearchByName(string text)
         {
-            throw new NotImplementedException();
+            var result = _studentService.GetAll();
+            foreach (var item in result)
+            {
+                if (item.Name.ToLower().Trim().Contains(text))
+                {
+                    Console.WriteLine($"{item.Id} {item.Name} {item.Surname} {item.Age}");
+                }
+            }
         }
+
+
+
+
     }
 }

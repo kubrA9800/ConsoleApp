@@ -13,7 +13,7 @@ namespace Repository.Repositories
     {
         public List<Student> SearchByFullName(string name, string surname)
         {
-            throw new NotImplementedException();
+            return AddDbContext<Student>.datas.FindAll(m => m.Name.Contains(name));
         }
     }
 }

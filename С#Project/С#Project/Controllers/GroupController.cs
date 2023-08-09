@@ -108,13 +108,11 @@ namespace С_Project.Controllers
             }
         }
 
-       
+
         public void SearchByName(string text)
         {
-           Group group = new();
-
-          var result=_groupService.GetAll();
-          foreach (var item in result)
+            var result = _groupService.GetAll();
+            foreach (var item in result)
             {
                 if (item.Name.ToLower().Trim().Contains(text))
                 {
@@ -123,6 +121,6 @@ namespace С_Project.Controllers
             }
         }
 
-       
+
     }
 }
