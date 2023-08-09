@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Repository.Repositories;
 using Repository.Data;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace С_Project.Controllers
 {
@@ -24,30 +25,17 @@ namespace С_Project.Controllers
 
         public void Create()
         {
-            ConsoleColor.Cyan.WriteConsole("Add student name");
+            ConsoleColor.Cyan.WriteConsole("Add student fullname");
             Name: string name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name))
             {
-                ConsoleColor.Red.WriteConsole("Student name can't be empty");
+                ConsoleColor.Red.WriteConsole("Student fullname can't be empty");
                 goto Name;
             }
             if (Regex.IsMatch(name, @"\d"))
             {
-                ConsoleColor.Red.WriteConsole("Name can't contain digits, please try again");
+                ConsoleColor.Red.WriteConsole("Fullname can't contain digits, please try again");
                 goto Name;
-            }
-
-            ConsoleColor.Cyan.WriteConsole("Add student surname");
-            Surname: string surname = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(surname))
-            {
-                ConsoleColor.Red.WriteConsole("Student surname can't be empty");
-                goto Surname;
-            }
-            if (Regex.IsMatch(surname, @"\d"))
-            {
-                    ConsoleColor.Red.WriteConsole("Surname can't contain digits, please try again");
-                    goto Surname;
             }
 
             ConsoleColor.Cyan.WriteConsole("Add student age");
@@ -57,11 +45,33 @@ namespace С_Project.Controllers
 
             if (!isCorrectAge)
             {
-                ConsoleColor.Red.WriteConsole("Don't add  word for age");
+                ConsoleColor.Red.WriteConsole("Don't add letter for age");
+                goto Age;
             }
 
+            ConsoleColor.Cyan.WriteConsole("Add student address");
+            Address: string address= Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(address))
+            {
+                ConsoleColor.Red.WriteConsole("Student address can't be empty");
+                goto Address;
+            }
+
+
+            ConsoleColor.Cyan.WriteConsole("Add student phone");
+            Phone: string phoneStr = Console.ReadLine();
+            int phone;
+            bool isCorrectPhone = int.TryParse(phoneStr, out phone);
+
+            if (!isCorrectPhone)
+            {
+                ConsoleColor.Red.WriteConsole("Don't add letter for phone");
+                goto Phone;
+            }
+
+
             ConsoleColor.Cyan.WriteConsole("Add group id");
-        GroupId: string groupIdStr = Console.ReadLine();
+            GroupId: string groupIdStr = Console.ReadLine();
             int groupId;
             bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
 
@@ -72,8 +82,7 @@ namespace С_Project.Controllers
             {
                 Student newStudent = new()
                 {
-                    Name = name,
-                    Surname = surname,
+                    FullName = name,
                     Age = age,
                     Group = group,
                 };
@@ -105,7 +114,7 @@ namespace С_Project.Controllers
             var result = _studentService.GetAll();
             foreach (var item in result)
             {
-                string data = $"{item.Id}-{item.Name}-{item.Surname} {item.Age} {item.Group.Name}";
+                string data = $"{item.Id}-{item.FullName}-{item.Age} {item.Address} {item.Phone} {item.Group.Name}";
                 ConsoleColor.Green.WriteConsole(data);
             }
         }
@@ -130,7 +139,7 @@ namespace С_Project.Controllers
                     goto Id;
                 }
 
-                string data = $"{result.Id}-{result.Name}-{result.Age}";
+                string data = $"{result.Id}-{result.FullName}-{result.Age} {result.Address} {result.Phone}";
                 ConsoleColor.Green.WriteConsole(data);
 
             }
@@ -146,9 +155,9 @@ namespace С_Project.Controllers
             var result = _studentService.GetAll();
             foreach (var item in result)
             {
-                if (item.Name.ToLower().Trim().Contains(text))
+                if (item.FullName.ToLower().Trim().Contains(text))
                 {
-                    Console.WriteLine($"{item.Id} {item.Name} {item.Surname} {item.Age}");
+                    Console.WriteLine($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone}");
                 }
             }
         }

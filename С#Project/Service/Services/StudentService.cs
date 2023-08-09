@@ -54,9 +54,9 @@ namespace Service.Services
             return _studentRepository.GetById(id);
         }
 
-        public List<Student> SearchByName(string name, string surname)
+        public List<Student> SearchByName(string fullName)
         {
-            return _studentRepository.SearchByFullName(name,surname);
+            return _studentRepository.SearchByFullName(fullName);
         }
     }
 }
