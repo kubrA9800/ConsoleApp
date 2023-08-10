@@ -14,7 +14,11 @@ namespace С_Project.Controllers
 {    
     public class AccountController
     {
-
+        private readonly IAccountService _accountService;
+        public AccountController()
+        {
+            _accountService = new AccountService();
+        }
         public void Register()
         {
             ConsoleColor.Cyan.WriteConsole("Add Name");
@@ -59,6 +63,17 @@ namespace С_Project.Controllers
             string password2=Console.ReadLine();
             if(password1==password2)
             {
+                User user1 = new User()
+                {
+                    Name = username,
+                    Surname = surname,
+                    Age = age,
+                    Email = email,
+                    Password = password1,
+                };
+
+                _accountService.Register(user1);
+                
                 ConsoleColor.Green.WriteConsole("Register success");
 
             }
@@ -73,21 +88,45 @@ namespace С_Project.Controllers
 
 
         
-        public bool Login()
+        public void Login()
         {
-            User user = new User();
+            
             ConsoleColor.Cyan.WriteConsole("Add email");
-            string email=Console.ReadLine();
+            Email: string email=Console.ReadLine();
 
-            ConsoleColor.Cyan.WriteConsole("Add password");
-            string password=Console.ReadLine();
-
-            if(email==user.Email && password == user.Password)
+            if (string.IsNullOrEmpty(email))
             {
-                return true;
+                ConsoleColor.Red.WriteConsole("Can't be empty");
+                goto Email;
             }
-            return false;
 
+            bool isSymbool = Regex.IsMatch(email, @"@");
+            if ( isSymbool==false)
+            {
+                Console.WriteLine("dont have email");
+                goto Email;
+            }
+            ConsoleColor.Cyan.WriteConsole("Add password");
+            string password = Console.ReadLine();
+            User user2 = new User()
+            {
+                Password = password,
+                Email = email
+            };
+
+            bool result = _accountService.Login(user2);
+            if (result)
+            {
+                Console.WriteLine("Login success");
+            }
+            else
+            {
+                Console.WriteLine("Email or password is wrong");
+                goto Email;
+            }
+
+
+            
         }
         
        

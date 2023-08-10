@@ -59,7 +59,7 @@ while(true)
                             groupController.SearchByName();
                             break;
                         case 7:
-                            groupController.GetAllByExpression();
+                            groupController.Sort();
                             break;
                         case 8:
                             studentController.Create();
@@ -108,6 +108,6 @@ static void RegisterLogin()
 
 Menu: static void Menues()
 {
-    ConsoleColor.DarkBlue.WriteConsole("Register success, please choose one option for workng with app: \n 1 - Create group \n 2 - Delete group \n 3 - Edit group \n 4 - Get group by id \n 5 - Get all groups \n 6 - Search group\n 7 - Filter group \n " +
-        " \n 8 - Create student \n 9 - Delete student \n 10 - Edit student \n 11 - Get Student by id \n 12 - Get all students \n 13 - Search student \n 14 - Sorting students");
+    ConsoleColor.DarkBlue.WriteConsole("Register success, please choose one option for workng with app: \n 1 - Create group \n 2 - Delete group \n 3 - Edit group \n 4 - Get group by id \n 5 - Get all groups \n 6 - Search group\n 7 - Sort group \n " +
+        " \n 8 - Create student \n 9 - Delete student \n 10 - Edit student \n 11 - Get Student by id \n 12 - Get all students \n 13 - Search student \n 14 - Sort students");
 }

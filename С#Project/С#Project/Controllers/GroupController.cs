@@ -34,6 +34,15 @@ namespace С_Project.Controllers
                 goto Name;
             }
 
+            var result = _groupService.GetAll();
+            foreach ( var item in result )
+            {
+                if ( item.Name == name )
+                {
+                    ConsoleColor.Red.WriteConsole("Group's name must be different, please add another name");
+                }
+            }
+
             ConsoleColor.Cyan.WriteConsole("Add group seat count");
             SeatCount: string seatCountStr=Console.ReadLine();
             int seatCount;
@@ -96,10 +105,7 @@ namespace С_Project.Controllers
             }
         }
 
-        public List<Group> GetAllByExpression()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void GetById()
         {
@@ -125,6 +131,17 @@ namespace С_Project.Controllers
             {
                 ConsoleColor.Red.WriteConsole("Please add Id format again:");
                 goto Id;
+            }
+        }
+
+
+
+        public void Sort()
+        {
+            var result = _groupService.Sort();
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.Id} {item.Name} {item.Capacity}");
             }
         }
 

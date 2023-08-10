@@ -14,9 +14,9 @@ namespace Service.Services.Interfaces
         Student Delete(int id);
         void Edit(Student entity);
         List<Student> GetAll();
-        List<Student> GetAllByExpression(Expression<Func<Student, bool>> expression);
+        
         Student GetById(int id);
         List<Student> SearchByName(string name);
-
+        List<Student> Sort();
     }
 }

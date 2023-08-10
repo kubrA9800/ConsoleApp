@@ -39,10 +39,7 @@ namespace Repository.Repositories
             return AddDbContext<T>.datas.FirstOrDefault(m=>m.Id== id);  
         }
 
-        public List<T> GetAllByExpression(Expression<Func<T, bool>> expression)
-        {
-            throw new NotImplementedException();
-        }
+        
 
     }
 }

@@ -10,5 +10,7 @@ namespace Repository.Repositories.Interfaces
     public interface IGroupRepository:IBaseRepository<Group>
     {
         List<Group> SearchByName(string name);
+
+        List <Group> Sort();
     }
 }

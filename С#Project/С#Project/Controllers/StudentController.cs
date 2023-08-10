@@ -125,6 +125,8 @@ namespace С_Project.Controllers
             }
         }
 
+
+
         public void Edit()
         {
             throw new NotImplementedException();
@@ -168,6 +170,15 @@ namespace С_Project.Controllers
             {
                 ConsoleColor.Red.WriteConsole("Please add Id format again:");
                 goto Id;
+            }
+        }
+
+        public void Sort()
+        {
+            var result = _studentService.Sort();
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone}");
             }
         }
 

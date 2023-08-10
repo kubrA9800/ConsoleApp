@@ -21,11 +21,11 @@ namespace Repository.Repositories
             return null;
         }
 
-        public void Delete()
+       
+
+        public List<Group> Sort()
         {
-
+            return AddDbContext<Group>.datas.OrderBy(m => m.Capacity).ToList();
         }
-
-        
     }
 }

@@ -15,5 +15,10 @@ namespace Repository.Repositories
         {
             return AddDbContext<Student>.datas.FindAll(m => m.FullName.Contains(name));
         }
+
+        public List<Student> Sort()
+        {
+            return AddDbContext<Student>.datas.OrderBy(m => m.Age).ToList();
+        }
     }
 }

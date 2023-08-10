@@ -44,10 +44,7 @@ namespace Service.Services
             return _studentRepository.GetAll();
         }
 
-        public List<Student> GetAllByExpression(Expression<Func<Student, bool>> expression)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Student GetById(int id)
         {
@@ -57,6 +54,11 @@ namespace Service.Services
         public List<Student> SearchByName(string fullName)
         {
             return _studentRepository.SearchByFullName(fullName);
+        }
+
+        public List<Student> Sort()
+        {
+            return _studentRepository.Sort();
         }
     }
 }

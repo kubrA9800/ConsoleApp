@@ -63,5 +63,10 @@ namespace Service.Services
 
             return _groupRepository.SearchByName(name);
         }
+
+        public List<Group> Sort()
+        {
+            return _groupRepository.Sort();
+        }
     }
 }
