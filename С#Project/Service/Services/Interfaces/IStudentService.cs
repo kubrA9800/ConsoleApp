@@ -11,7 +11,7 @@ namespace Service.Services.Interfaces
     public interface IStudentService
     {
         void Create(Student entity);
-        void Delete(Student entity);
+        Student Delete(int id);
         void Edit(Student entity);
         List<Student> GetAll();
         List<Student> GetAllByExpression(Expression<Func<Student, bool>> expression);

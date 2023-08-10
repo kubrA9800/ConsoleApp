@@ -28,9 +28,9 @@ namespace Service.Services
             _count++;
         }
 
-        public void Delete(Group group)
+        public Group Delete(int id)
         {
-            throw new NotImplementedException();
+            return _groupRepository.Delete(id);
         }
 
         public void Edit(Group group)

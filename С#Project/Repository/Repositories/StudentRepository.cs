@@ -11,9 +11,9 @@ namespace Repository.Repositories
 {
     public class StudentRepository : BaseRepository<Student>, IStudentRepository
     {
-        public List<Student> SearchByFullName(string text)
+        public List<Student> SearchByFullName(string name)
         {
-            return AddDbContext<Student>.datas.FindAll(m => m.FullName.Contains(text));
+            return AddDbContext<Student>.datas.FindAll(m => m.FullName.Contains(name));
         }
     }
 }

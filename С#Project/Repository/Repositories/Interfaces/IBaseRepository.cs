@@ -11,7 +11,7 @@ namespace Repository.Repositories.Interfaces
     public interface IBaseRepository<T> where T:BaseEntity
     {
         void Create(T entity);
-        void Delete(T entity);
+         T Delete(int id);
         void Edit(T entity);
         List<T> GetAll();
         List<T> GetAllByExpression(Expression<Func<T, bool>> expression);

@@ -29,9 +29,9 @@ namespace Service.Services
             _count++;
         }
 
-        public void Delete(Student student)
+        public Student Delete(int id)
         {
-            throw new NotImplementedException();
+            return _studentRepository.Delete(id);
         }
 
         public void Edit(Student student)

@@ -79,6 +79,7 @@ while(true)
                             studentController.GetAll();
                             break;
                         case 13:
+                            Console.WriteLine("Search student");
                             string fullName= Console.ReadLine();
                             studentController.SearchByName(fullName);
                             break;

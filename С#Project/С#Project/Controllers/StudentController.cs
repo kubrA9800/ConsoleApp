@@ -84,6 +84,8 @@ namespace С_Project.Controllers
                 {
                     FullName = name,
                     Age = age,
+                    Address = address,
+                    Phone=phone,
                     Group = group,
                 };
 
@@ -101,7 +103,26 @@ namespace С_Project.Controllers
 
         public void Delete()
         {
-            
+            Console.WriteLine("Add id to delete student");
+            Id: string idStr = Console.ReadLine();
+            int id;
+            bool isCorrectId = int.TryParse(idStr, out id);
+            if (isCorrectId)
+            {
+                var result = _studentService.GetById(id);
+                if (result is null)
+                {
+                    Console.WriteLine("Data not found");
+                    goto Id;
+                }
+                _studentService.Delete(id);
+                ConsoleColor.Green.WriteConsole("Group is deleted");
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Please add correct id format");
+                goto Id;
+            }
         }
 
         public void Edit()
@@ -114,7 +135,7 @@ namespace С_Project.Controllers
             var result = _studentService.GetAll();
             foreach (var item in result)
             {
-                string data = $"{item.Id}-{item.FullName}-{item.Age} {item.Address} {item.Phone} {item.Group.Name}";
+                string data = $"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}";
                 ConsoleColor.Green.WriteConsole(data);
             }
         }
@@ -139,8 +160,8 @@ namespace С_Project.Controllers
                     goto Id;
                 }
 
-                string data = $"{result.Id}-{result.FullName}-{result.Age} {result.Address} {result.Phone}";
-                ConsoleColor.Green.WriteConsole(data);
+                string data = $"{result.Id} {result.FullName} {result.Age} {result.Address} {result.Phone}";
+                Console.WriteLine(data);
 
             }
             else
@@ -150,12 +171,12 @@ namespace С_Project.Controllers
             }
         }
 
-        public void SearchByName(string text)
+        public void SearchByName(string fullName )
         {
             var result = _studentService.GetAll();
             foreach (var item in result)
             {
-                if (item.FullName.ToLower().Trim().Contains(text))
+                if (item.FullName.ToLower().Trim().Contains(fullName))
                 {
                     Console.WriteLine($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone}");
                 }

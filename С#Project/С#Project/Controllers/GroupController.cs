@@ -58,7 +58,26 @@ namespace С_Project.Controllers
         }
         public void Delete()
         {
-            
+            Console.WriteLine("Add id to delete group");
+            Id:string idStr=Console.ReadLine();
+            int id;
+            bool isCorrectId=int.TryParse(idStr, out id);
+            if (isCorrectId)
+            {
+                var result=_groupService.GetById(id);
+                if (result is null)
+                {
+                    Console.WriteLine("Data not found");
+                    goto Id;
+                }
+                _groupService.Delete(id);
+                ConsoleColor.Green.WriteConsole("Group is deleted");
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Please add correct id format");
+                goto Id;
+            }
         }
 
         public void Edit()
@@ -116,7 +135,7 @@ namespace С_Project.Controllers
             {
                 if (item.Name.ToLower().Trim().Contains(text))
                 {
-                    Console.WriteLine($"{item.Id}{item.Name} {item.Capacity}");
+                    Console.WriteLine($"{item.Id} {item.Name} {item.Capacity}");
                 }
             }
         }

@@ -17,9 +17,11 @@ namespace Repository.Repositories
             AddDbContext<T>.datas.Add(entity);
         }
 
-        public void Delete(T entity)
+        public T Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = AddDbContext<T>.datas.FirstOrDefault(m => m.Id == id);
+            AddDbContext<T>.datas.Remove(result);
+            return result;
         }
 
         public void Edit(T entity)

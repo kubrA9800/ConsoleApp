@@ -11,7 +11,7 @@ namespace Service.Services.Interfaces
     public interface IGroupService
     {
         void Create(Group entity);
-        void Delete(Group entity);
+        Group  Delete(int id);
         void Edit(Group entity);
         List<Group> GetAll();
         List<Group> GetAllByExpression(Expression<Func<Group, bool>> expression);
