@@ -11,6 +11,7 @@ using Repository.Repositories;
 using System.Linq.Expressions;
 using static System.Net.Mime.MediaTypeNames;
 using Repository.Data;
+using System.Xml.Linq;
 
 namespace С_Project.Controllers
 {
@@ -128,16 +129,35 @@ namespace С_Project.Controllers
         }
 
 
-        public void SearchByName(string text)
+        public void SearchByName()
         {
-            var result = _groupService.GetAll();
-            foreach (var item in result)
+        SearcText:  ConsoleColor.Cyan.WriteConsole("Please, enter search text");
+       string searchText = Console.ReadLine();
+            if (string.IsNullOrEmpty(searchText))
             {
-                if (item.Name.ToLower().Trim().Contains(text))
+                ConsoleColor.Red.WriteConsole("Data not found");
+                goto SearcText;
+            }
+
+                var dbGroup = _groupService.SearchByName(searchText);
+            if (dbGroup == null)
+            {
+                ConsoleColor.Red.WriteConsole("Data not found");
+                goto SearcText;
+            }
+            else
+            {
+                foreach (var item in dbGroup)
                 {
-                    Console.WriteLine($"{item.Id} {item.Name} {item.Capacity}");
+                    if (item.Name.ToLower().Trim().Contains(searchText))
+                    {
+                        Console.WriteLine($"{item.Id} {item.Name} {item.Capacity}");
+                    }
+
                 }
             }
+
+
         }
 
 

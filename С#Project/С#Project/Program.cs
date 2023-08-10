@@ -56,9 +56,7 @@ while(true)
                             groupController.GetAll();
                             break;
                         case 6:
-                            Console.WriteLine("Search group");
-                            string text = Console.ReadLine();
-                            groupController.SearchByName(text);
+                            groupController.SearchByName();
                             break;
                         case 7:
                             groupController.GetAllByExpression();

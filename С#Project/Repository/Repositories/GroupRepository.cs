@@ -13,7 +13,12 @@ namespace Repository.Repositories
     {
         public List<Group> SearchByName(string name)
         {
-            return AddDbContext<Group>.datas.FindAll(m => m.Name.Contains(name));
+            List<Group> data =  AddDbContext<Group>.datas.Where(m => m.Name.Contains(name)).ToList();
+            if (data.Any())
+            {
+                return data;
+            }
+            return null;
         }
 
         public void Delete()

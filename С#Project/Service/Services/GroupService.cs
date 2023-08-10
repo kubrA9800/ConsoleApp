@@ -60,6 +60,7 @@ namespace Service.Services
 
         public List<Group> SearchByName(string name)
         {
+
             return _groupRepository.SearchByName(name);
         }
     }

@@ -116,7 +116,7 @@ namespace С_Project.Controllers
                     goto Id;
                 }
                 _studentService.Delete(id);
-                ConsoleColor.Green.WriteConsole("Group is deleted");
+                ConsoleColor.Green.WriteConsole("Student is deleted");
             }
             else
             {
