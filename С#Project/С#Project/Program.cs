@@ -19,11 +19,8 @@ while(true)
     {
         if (operation == 1)
         {
-
             accountController.Register();
-            RegisterLogin();
-
-           
+            RegisterLogin();         
         }
 
         else if (operation==2)
@@ -32,7 +29,7 @@ while(true)
             Menues();
             while (true)
             {
-                string menuOperationStr = Console.ReadLine();
+                Operation: string menuOperationStr = Console.ReadLine();
                 int menuOperation;
                 bool isCorrectMenuOperation = int.TryParse(menuOperationStr, out menuOperation);
 
@@ -77,17 +74,22 @@ while(true)
                             studentController.GetAll();
                             break;
                         case 13:
-                            Console.WriteLine("Search student");
-                            string fullName= Console.ReadLine();
-                            studentController.SearchByName(fullName);
+                            studentController.SearchByFullName();
                             break;
                         case 14:
-                            studentController.GetAllByExpression();
+                            studentController.Sort();
                             break;
                         default:
+                            ConsoleColor.Red.WriteConsole("Operation not found");
                             break;
+                            
                     }
             
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Operation format is not correct");
+                    goto Operation;
                 }
             }
 
@@ -98,16 +100,20 @@ while(true)
         }
 
     }
+    else
+    {
+        ConsoleColor.Red.WriteConsole("Operation format is not correct");
+    }
 
 }
 static void RegisterLogin()
 {
-    ConsoleColor.Cyan.WriteConsole("Choose one option: 1- Register, 2 - Login");
+    ConsoleColor.Blue.WriteConsole("Choose one option: 1- Register, 2 - Login");
 }
 
 
 Menu: static void Menues()
 {
-    ConsoleColor.DarkBlue.WriteConsole("Register success, please choose one option for workng with app: \n 1 - Create group \n 2 - Delete group \n 3 - Edit group \n 4 - Get group by id \n 5 - Get all groups \n 6 - Search group\n 7 - Sort group \n " +
+    ConsoleColor.Blue.WriteConsole("Please choose one option for workng with app: \n 1 - Create group \n 2 - Delete group \n 3 - Edit group \n 4 - Get group by id \n 5 - Get all groups \n 6 - Search group\n 7 - Sort group \n " +
         " \n 8 - Create student \n 9 - Delete student \n 10 - Edit student \n 11 - Get Student by id \n 12 - Get all students \n 13 - Search student \n 14 - Sort students");
 }

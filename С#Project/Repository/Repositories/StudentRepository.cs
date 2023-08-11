@@ -13,7 +13,12 @@ namespace Repository.Repositories
     {
         public List<Student> SearchByFullName(string name)
         {
-            return AddDbContext<Student>.datas.FindAll(m => m.FullName.Contains(name));
+            List<Student> data = AddDbContext<Student>.datas.Where(m => m.FullName.Contains(name)).ToList();
+            if (data.Any())
+            {
+                return data;
+            }
+            return null;
         }
 
         public List<Student> Sort()

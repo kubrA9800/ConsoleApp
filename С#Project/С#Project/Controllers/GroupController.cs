@@ -26,7 +26,7 @@ namespace С_Project.Controllers
 
         public void Create()
         {
-            ConsoleColor.Cyan.WriteConsole("Add group name");
+            ConsoleColor.DarkYellow.WriteConsole("Add group name");
             Name: string name=Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -40,10 +40,11 @@ namespace С_Project.Controllers
                 if ( item.Name == name )
                 {
                     ConsoleColor.Red.WriteConsole("Group's name must be different, please add another name");
+                    goto Name;
                 }
             }
 
-            ConsoleColor.Cyan.WriteConsole("Add group seat count");
+            ConsoleColor.DarkYellow.WriteConsole("Add group seat count");
             SeatCount: string seatCountStr=Console.ReadLine();
             int seatCount;
 
@@ -57,7 +58,7 @@ namespace С_Project.Controllers
                 };
               
                 _groupService.Create(entity);
-                ConsoleColor.Cyan.WriteConsole("Group create success");
+                ConsoleColor.Green.WriteConsole("Group create success");
             }
             else
             {
@@ -68,7 +69,7 @@ namespace С_Project.Controllers
         }
         public void Delete()
         {
-            Console.WriteLine("Add id to delete group");
+            ConsoleColor.DarkYellow.WriteConsole("Add id to delete group");
             Id:string idStr=Console.ReadLine();
             int id;
             bool isCorrectId=int.TryParse(idStr, out id);
@@ -110,7 +111,7 @@ namespace С_Project.Controllers
         public void GetById()
         {
 
-            ConsoleColor.Cyan.WriteConsole("Add group Id");
+            ConsoleColor.DarkYellow.WriteConsole("Add group Id");
             Id: string IdStr = Console.ReadLine();
             int id;
             bool isCorrectId = int.TryParse(IdStr, out id);
@@ -148,15 +149,15 @@ namespace С_Project.Controllers
 
         public void SearchByName()
         {
-        SearcText:  ConsoleColor.Cyan.WriteConsole("Please, enter search text");
-       string searchText = Console.ReadLine();
+            SearcText:  ConsoleColor.DarkYellow.WriteConsole("Please, enter search text");
+            string searchText = Console.ReadLine();
             if (string.IsNullOrEmpty(searchText))
             {
                 ConsoleColor.Red.WriteConsole("Data not found");
                 goto SearcText;
             }
 
-                var dbGroup = _groupService.SearchByName(searchText);
+            var dbGroup = _groupService.SearchByName(searchText);
             if (dbGroup == null)
             {
                 ConsoleColor.Red.WriteConsole("Data not found");
@@ -168,7 +169,7 @@ namespace С_Project.Controllers
                 {
                     if (item.Name.ToLower().Trim().Contains(searchText))
                     {
-                        Console.WriteLine($"{item.Id} {item.Name} {item.Capacity}");
+                        ConsoleColor.Green.WriteConsole($"{item.Id} {item.Name} {item.Capacity}");
                     }
 
                 }

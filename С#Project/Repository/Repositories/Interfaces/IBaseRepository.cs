@@ -14,7 +14,7 @@ namespace Repository.Repositories.Interfaces
         T Delete(int id);
         void Edit(T entity);
         List<T> GetAll();
-       
+        
         T GetById(int id);
         
     }

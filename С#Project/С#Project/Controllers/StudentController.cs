@@ -25,7 +25,7 @@ namespace С_Project.Controllers
 
         public void Create()
         {
-            ConsoleColor.Cyan.WriteConsole("Add student fullname");
+            ConsoleColor.DarkYellow.WriteConsole("Add student fullname");
             Name: string name = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -38,7 +38,7 @@ namespace С_Project.Controllers
                 goto Name;
             }
 
-            ConsoleColor.Cyan.WriteConsole("Add student age");
+            ConsoleColor.DarkYellow.WriteConsole("Add student age");
             Age: string ageStr = Console.ReadLine();
             int age;
             bool isCorrectAge = int.TryParse(ageStr, out age);
@@ -48,8 +48,12 @@ namespace С_Project.Controllers
                 ConsoleColor.Red.WriteConsole("Don't add letter for age");
                 goto Age;
             }
+            if (age > 100)
+            {
+                ConsoleColor.Red.WriteConsole("Age can't be over 100");
+            }
 
-            ConsoleColor.Cyan.WriteConsole("Add student address");
+            ConsoleColor.DarkYellow.WriteConsole("Add student address");
             Address: string address= Console.ReadLine();
             if (string.IsNullOrWhiteSpace(address))
             {
@@ -58,7 +62,7 @@ namespace С_Project.Controllers
             }
 
 
-            ConsoleColor.Cyan.WriteConsole("Add student phone");
+            ConsoleColor.DarkYellow.WriteConsole("Add student phone");
             Phone: string phoneStr = Console.ReadLine();
             int phone;
             bool isCorrectPhone = int.TryParse(phoneStr, out phone);
@@ -70,7 +74,7 @@ namespace С_Project.Controllers
             }
 
 
-            ConsoleColor.Cyan.WriteConsole("Add group id");
+            ConsoleColor.DarkYellow.WriteConsole("Add group id");
             GroupId: string groupIdStr = Console.ReadLine();
             int groupId;
             bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
@@ -80,18 +84,26 @@ namespace С_Project.Controllers
 
             if (isCorrectGroupId)
             {
-                Student newStudent = new()
+                if(group != null)
                 {
-                    FullName = name,
-                    Age = age,
-                    Address = address,
-                    Phone=phone,
-                    Group = group,
-                };
+                    Student newStudent = new()
+                    {
+                        FullName = name,
+                        Age = age,
+                        Address = address,
+                        Phone = phone,
+                        Group = group,
+                    };
 
-                _studentService.Create(newStudent);
+                    _studentService.Create(newStudent);
 
-                ConsoleColor.Green.WriteConsole("Student successfully created");
+                    ConsoleColor.Green.WriteConsole("Student successfully created");
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Group not found, choose another group");
+                    goto GroupId;
+                }            
             }
             else
             {
@@ -103,7 +115,7 @@ namespace С_Project.Controllers
 
         public void Delete()
         {
-            Console.WriteLine("Add id to delete student");
+            ConsoleColor.DarkYellow.WriteConsole("Add id to delete student");
             Id: string idStr = Console.ReadLine();
             int id;
             bool isCorrectId = int.TryParse(idStr, out id);
@@ -142,14 +154,11 @@ namespace С_Project.Controllers
             }
         }
 
-        public List<Student> GetAllByExpression()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void GetById()
         {
-            ConsoleColor.Cyan.WriteConsole("Add student Id");
+            ConsoleColor.DarkYellow.WriteConsole("Add student Id");
             Id: string IdStr = Console.ReadLine();
             int id;
             bool isCorrectId = int.TryParse(IdStr, out id);
@@ -162,9 +171,8 @@ namespace С_Project.Controllers
                     goto Id;
                 }
 
-                string data = $"{result.Id} {result.FullName} {result.Age} {result.Address} {result.Phone}";
-                Console.WriteLine(data);
-
+                string data = $"{result.Id} {result.FullName} {result.Age} {result.Address} {result.Phone} {result.Group.Name}";
+                ConsoleColor.Green.WriteConsole(data);
             }
             else
             {
@@ -178,20 +186,39 @@ namespace С_Project.Controllers
             var result = _studentService.Sort();
             foreach (var item in result)
             {
-                Console.WriteLine($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone}");
+                ConsoleColor.Green.WriteConsole($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}");
             }
         }
 
-        public void SearchByName(string fullName )
+        public void SearchByFullName()
         {
-            var result = _studentService.GetAll();
-            foreach (var item in result)
+            SearcText: ConsoleColor.DarkYellow.WriteConsole("Please enter search text");
+            string searchText = Console.ReadLine();
+            if (string.IsNullOrEmpty(searchText))
             {
-                if (item.FullName.ToLower().Trim().Contains(fullName))
+                ConsoleColor.Red.WriteConsole("Student not found");
+                goto SearcText;
+            }
+
+            var dbGroup = _studentService.SearchByName(searchText);
+            if (dbGroup == null)
+            {
+                ConsoleColor.Red.WriteConsole("Student not found");
+                goto SearcText;
+            }
+            else
+            {
+                foreach (var item in dbGroup)
                 {
-                    Console.WriteLine($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone}");
+                    if (item.FullName.ToLower().Trim().Contains(searchText))
+                    {
+                        ConsoleColor.Green.WriteConsole($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}");
+                    }
+
                 }
             }
+
+
         }
 
 
