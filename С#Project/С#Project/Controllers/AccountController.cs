@@ -24,9 +24,9 @@ namespace С_Project.Controllers
         {
             ConsoleColor.DarkYellow.WriteConsole("Add Name");
             Username: string username=Console.ReadLine();
-            if (Regex.IsMatch(username, @"\d"))
+            if (Regex.IsMatch(username, @"[^A-Za-z]"))
             {
-                ConsoleColor.Red.WriteConsole("Username can't contain digits, please try again");
+                ConsoleColor.Red.WriteConsole("Username format is not correct, please try again");
                 goto Username;        
             }
             if (string.IsNullOrWhiteSpace(username))
@@ -36,9 +36,9 @@ namespace С_Project.Controllers
             }
             ConsoleColor.DarkYellow.WriteConsole("Add surname");
             Surname: string surname=Console.ReadLine();
-            if (Regex.IsMatch(surname, @"\d"))
+            if (Regex.IsMatch(surname, @"[^A-Za-z]"))
             {
-                ConsoleColor.Red.WriteConsole("Surname can't contain digits, please try again");
+                ConsoleColor.Red.WriteConsole("Surname format is not correct, please try again");
                 goto Surname;
             }
             if (string.IsNullOrWhiteSpace(surname))

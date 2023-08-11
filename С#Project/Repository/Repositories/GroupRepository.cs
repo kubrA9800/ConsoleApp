@@ -27,5 +27,7 @@ namespace Repository.Repositories
         {
             return AddDbContext<Group>.datas.OrderBy(m => m.Capacity).ToList();
         }
+
+     
     }
 }

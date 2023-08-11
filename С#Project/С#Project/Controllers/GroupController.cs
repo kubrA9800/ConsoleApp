@@ -99,11 +99,19 @@ namespace С_Project.Controllers
         public void GetAll()
         {
             var result = _groupService.GetAll();
-            foreach (var item in result)
+            if (result.Count != 0)
             {
-                string data = $"{item.Id}-{item.Name}-{item.Capacity}";
-                ConsoleColor.Green.WriteConsole(data);
+                foreach (var item in result)
+                {
+                    string data = $"{item.Id}-{item.Name}-{item.Capacity}";
+                    ConsoleColor.Green.WriteConsole(data);
+                }
             }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Groups do not exists");
+            }
+            
         }
 
         
@@ -140,10 +148,19 @@ namespace С_Project.Controllers
         public void Sort()
         {
             var result = _groupService.Sort();
-            foreach (var item in result)
-            {
-                Console.WriteLine($"{item.Id} {item.Name} {item.Capacity}");
-            }
+                if (result.Count != 0)
+                {
+                     foreach (var item in result)
+                     {
+                         ConsoleColor.Green.WriteConsole($"{item.Id} {item.Name} {item.Capacity}");
+                     }
+
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Groups do not exist");
+                }
+            
         }
 
 
@@ -175,9 +192,6 @@ namespace С_Project.Controllers
                 }
             }
 
-
         }
-
-
     }
 }

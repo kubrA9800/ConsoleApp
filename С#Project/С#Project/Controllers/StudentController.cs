@@ -32,9 +32,9 @@ namespace С_Project.Controllers
                 ConsoleColor.Red.WriteConsole("Student fullname can't be empty");
                 goto Name;
             }
-            if (Regex.IsMatch(name, @"\d"))
+            if (Regex.IsMatch(name, @"[^A-Za-z]"))
             {
-                ConsoleColor.Red.WriteConsole("Fullname can't contain digits, please try again");
+                ConsoleColor.Red.WriteConsole("Fullname format is not correct, please try again");
                 goto Name;
             }
 
@@ -101,6 +101,7 @@ namespace С_Project.Controllers
                 }
                 else
                 {
+
                     ConsoleColor.Red.WriteConsole("Group not found, choose another group");
                     goto GroupId;
                 }            
@@ -124,7 +125,7 @@ namespace С_Project.Controllers
                 var result = _studentService.GetById(id);
                 if (result is null)
                 {
-                    Console.WriteLine("Data not found");
+                    ConsoleColor.Red.WriteConsole("Student not found");
                     goto Id;
                 }
                 _studentService.Delete(id);
@@ -147,11 +148,19 @@ namespace С_Project.Controllers
         public void GetAll()
         {
             var result = _studentService.GetAll();
-            foreach (var item in result)
+            if (result.Count != 0)
             {
-                string data = $"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}";
-                ConsoleColor.Green.WriteConsole(data);
+                foreach (var item in result)
+                {
+                    string data = $"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}";
+                    ConsoleColor.Green.WriteConsole(data);
+                }
             }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Students do not exist");
+            }
+            
         }
 
         
@@ -184,10 +193,18 @@ namespace С_Project.Controllers
         public void Sort()
         {
             var result = _studentService.Sort();
-            foreach (var item in result)
+            if (result.Count != 0)
             {
-                ConsoleColor.Green.WriteConsole($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}");
+                foreach (var item in result)
+                {
+                    ConsoleColor.Green.WriteConsole($"{item.Id} {item.FullName} {item.Age} {item.Address} {item.Phone} {item.Group.Name}");
+                }
             }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Students do not exist");
+            }
+            
         }
 
         public void SearchByFullName()
@@ -220,9 +237,6 @@ namespace С_Project.Controllers
 
 
         }
-
-
-
 
     }
 }
